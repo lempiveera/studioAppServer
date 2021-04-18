@@ -9,7 +9,24 @@
 
 <!-- the main page, should show tasks for now, doesnt work yet, problem with todo : ${todos} ? -->
 <body>
-	<h1>Sumu</h1>
-		<a th:href="@{home}">back home</a>
+	<h1>sumu</h1>
+	<table>
+		<tbody class="tasklist">
+			<tr>
+				<th>Task</th>
+				<th>Whos task</th>
+			</tr>
+
+			<!-- its tasks, cause in the controller it says tasks at model add attribute -->
+			<tr th:each="todo : ${tasks}">
+				<td th:text="${todo.task}"></td>
+				<td th:text="${todo.who}"></td>
+				<!--  <td><a th:href="@{/delete/{id}(id=${todo.id})}"class="btn btn-xs btn-danger">Delete</a></td> -->
+				<!--  <td><a th:href="@{/edit/{id}(id=${todo.id})}" class="btn btn-success">Edit</a></td> -->
+			</tr>
+		</tbody>
+	</table>
+	<a href="/add" class="btn btn-primary">Add New Task</a>
+	<a th:href="@{home}">back home</a>
 </body>
 </html>

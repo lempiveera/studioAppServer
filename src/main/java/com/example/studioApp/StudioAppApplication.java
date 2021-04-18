@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.studioApp.model.Todo;
 import com.example.studioApp.model.TodoRepositoryD;
+import com.example.studioApp.model.TodoRepositoryS;
 
 @SpringBootApplication
 public class StudioAppApplication {
@@ -20,14 +21,21 @@ public class StudioAppApplication {
 	//THIS IS USING H2 DATABASE, NEED TO CHANGE TO MARIADB tai vastaava
 	//commandline runner to add test data to database
 	@Bean
-	public CommandLineRunner demo(TodoRepositoryD trepository) {
+	public CommandLineRunner demo(TodoRepositoryD trepositoryd, TodoRepositoryS trepositorys) {
 		return (args) -> {
 			
-			Todo a = new Todo("do something", "veera");
+			Todo a = new Todo("downstairsTEST", "veera");
 			Todo b = new Todo("do something else", "meikäpoika");
 
-			trepository.save(a);
-			trepository.save(b);
+			Todo c = new Todo("sumuTEST", "veera");
+			Todo d = new Todo("do something else", "meikäpoika");
+
+			
+			trepositoryd.save(a);
+			trepositoryd.save(b);
+			
+			trepositorys.save(c);
+			trepositorys.save(d);
 			
 		};
 	}	
