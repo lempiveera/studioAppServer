@@ -8,8 +8,9 @@
 <body>
 	<h1>Add task for downstairs</h1>
 	<div>
-		<form th:object="${todo}" th:action="@{save}" action="#" method="post">
+		<form th:object="${todo}" th:action="@{saveD}" action="#" method="post">
 			<input type="hidden" th:field="*{id}" class="form-control" /> 
+			<input class="form-control" type="hidden" th:value="D" id="place" name= "place"/>
 			
 			<label for="task">Task</label> 
 			<input type="text" th:field="*{task}" /> 

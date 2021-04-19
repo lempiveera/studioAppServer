@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 
 //repo for dealing with downstairs todo-list
-public interface TodoRepositoryD extends CrudRepository<Todo, Long> {
-	List<Todo> findByWho(String who);
+public interface TodoRepository extends CrudRepository<Todo, Long> {
+	List<Todo> findByPlace(String place);
 	//long deleteByWho(String who); EI SALEE TARVII?
 }

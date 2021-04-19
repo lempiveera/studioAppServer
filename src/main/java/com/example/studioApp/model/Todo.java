@@ -12,17 +12,20 @@ public class Todo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	private Long id;
+	private String place;
 	private String task;
 	private String who;
 
 	//Todo class, task = todo, or the thing that needs to be done
 	//who = who will do it, can it be empty?
+	//place = downstairs, upstairs, sumu
 	
 	
 	public Todo() {}
 
-	public Todo(String task, String who) {
+	public Todo(String place, String task, String who) {
 		super();
+		this.place = place;
 		this.task = task;
 		this.who = who;
 	}
@@ -32,6 +35,14 @@ public class Todo {
 		//this.task = task;
 	//} IS THIS NEEDED?
 	
+
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
 
 	public Long getId() {
 		return id;
@@ -59,7 +70,8 @@ public class Todo {
 
 	@Override
 	public String toString() {
-		return "Task [id=" + id + ", task=" + task + ", who=" + who + "]";
+		return "Todo [id=" + id + ", place=" + place + ", task=" + task + ", who=" + who + "]";
 	}
+
 
 }

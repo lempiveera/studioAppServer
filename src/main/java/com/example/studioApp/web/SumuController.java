@@ -8,21 +8,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.studioApp.model.TodoRepository;
 import com.example.studioApp.model.Todo;
-import com.example.studioApp.model.TodoRepositoryS;
 
 @Controller
 public class SumuController {
 
 	@Autowired
-	private TodoRepositoryS trepos; 
+	private TodoRepository trepo; 
 	
 	@GetMapping(value = "/sumu")
 	public String sumu(Model model) {
-		model.addAttribute("tasks", trepos.findAll());
+		model.addAttribute("tasks", trepo.findByPlace("S"));
 		return "s/sumu";
 	}
 	
-//YOU NEED TO CREATE DIFFERENT ENITIES FOR ALL OF THE REPOS, DOESNT WORK THE WAY I HOPED :(
+	@RequestMapping(value="addS")
+	public String addTaskS(Model model) {
+		model.addAttribute("todo", new Todo());
+		return "s/sAddTask";
+	}
+	
+	@PostMapping(value = "saveS")
+	public String saveTask(Todo task) {
+		trepo.save(task);
+		return "redirect:sumu";
+	}
+//TODO YOU NEED TO CREATE DIFFERENT ENITIES FOR ALL OF THE REPOS, DOESNT WORK THE WAY I HOPED :( 
 	
 }
