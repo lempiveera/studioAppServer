@@ -34,6 +34,18 @@ public class SumuController {
 		trepo.save(task);
 		return "redirect:sumu";
 	}
+	
+	@GetMapping(value = "/delete_S/{id}")
+	public String deleteTask(@PathVariable("id") Long id, Model model) {
+		trepo.deleteById(id);
+		return "redirect:/sumu";
+	}
+	
+	@GetMapping(value = "/edit_S/{id}")
+	public String editTask(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("todo", trepo.findById(id));
+		return "s/sEditTask";
+	}
 //TODO YOU NEED TO CREATE DIFFERENT ENITIES FOR ALL OF THE REPOS, DOESNT WORK THE WAY I HOPED :( 
 	
 }

@@ -11,7 +11,7 @@
 		<form th:object="${todo}" th:action="@{saveD}" action="#" method="post">
 			<input type="hidden" th:field="*{id}" class="form-control" /> 
 			<input class="form-control" type="hidden" th:value="D" id="place" name= "place"/>
-			
+			<!--  adds label D for place, D is for downstairs -->
 			<label for="task">Task</label> 
 			<input type="text" th:field="*{task}" /> 
 			

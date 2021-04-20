@@ -8,7 +8,7 @@
 <body>
 	<h1>Edit Task</h1>
 	<div>
-		<form th:object="${todo}" th:action="@{../save}" action="#" method="post">
+		<form th:object="${todo}" th:action="@{../saveD}" action="#" method="post">
 			<input type = "hidden" th:field="*{id}" class = "form-control"/>
 			<input type = "hidden" th:field="*{place}" class = "form-control"/>
 			<input type ="text" th:field="*{task}"/>
