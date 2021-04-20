@@ -40,13 +40,13 @@ public class DownstairsController {
 		return "redirect:downstairs";
 	}
 	
-	@GetMapping(value = "/delete/{id}")
+	@GetMapping(value = "/delete_D/{id}")
 	public String deleteTask(@PathVariable("id") Long id, Model model) {
 		trepod.deleteById(id);
 		return "redirect:/downstairs";
 	}
 	
-	@GetMapping(value = "/edit/{id}")
+	@GetMapping(value = "/edit_D/{id}")
 	public String editTask(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("todo", trepod.findById(id));
 		return "d/dEditTask";

@@ -21,8 +21,8 @@
 			<tr th:each="todo : ${tasks}">
 				<td th:text="${todo.task}"></td>
 				<td th:text="${todo.who}"></td>
-				<td><a th:href="@{/delete/{id}(id=${todo.id})}"class="btn btn-xs btn-danger">Delete</a></td>
-				<td><a th:href="@{/edit/{id}(id=${todo.id})}" class="btn btn-success">Edit</a></td>
+				<td><a th:href="@{/delete_D/{id}(id=${todo.id})}"class="btn btn-xs btn-danger">Delete</a></td>
+				<td><a th:href="@{/edit_D/{id}(id=${todo.id})}" class="btn btn-success">Edit</a></td>
 			</tr>
 		</tbody>
 	</table>

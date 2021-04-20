@@ -28,13 +28,19 @@ public class StudioAppApplication {
 			Todo c = new Todo("S", "sumuTEST", "veera");
 			Todo d = new Todo("S", "do something else SS", "meikäpoika");
 
-			// CURRENTLY CRASHES, HOW TO DEAL WITH ENTITIES?
+			Todo e = new Todo("U", "U_TEST", "veera");
+			Todo f = new Todo("U", "do something else UU", "boi");
+
+			// CURRENTLY CRASHES, HOW TO DEAL WITH ENTITIES? FIXED
 
 			trepository.save(a);
 			trepository.save(b);
 
 			trepository.save(c);
 			trepository.save(d);
+			
+			trepository.save(e);
+			trepository.save(f);
 
 		};
 	}
