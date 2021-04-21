@@ -15,12 +15,14 @@
 			<tr>
 				<th>Task</th>
 				<th>Whos task</th>
+				<th>Priority</th>
 			</tr>
 
 			<!-- its tasks, cause in the controller it says tasks at model add attribute -->
 			<tr th:each="todo : ${tasks}">
 				<td th:text="${todo.task}"></td>
 				<td th:text="${todo.who}"></td>
+				<td th:text="${todo.priority.urgency}"></td>
 				<td><a th:href="@{/delete_D/{id}(id=${todo.id})}"class="btn btn-xs btn-danger">Delete</a></td>
 				<td><a th:href="@{/edit_D/{id}(id=${todo.id})}" class="btn btn-success">Edit</a></td>
 			</tr>

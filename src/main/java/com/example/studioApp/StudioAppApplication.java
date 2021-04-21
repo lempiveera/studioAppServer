@@ -6,6 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.example.studioApp.model.TodoRepository;
+import com.example.studioApp.model.Present;
+import com.example.studioApp.model.PresentRepository;
+import com.example.studioApp.model.Priority;
+import com.example.studioApp.model.PriorityRepository;
 import com.example.studioApp.model.Todo;
 
 @SpringBootApplication
@@ -19,29 +23,43 @@ public class StudioAppApplication {
 	// THIS IS USING H2 DATABASE, NEED TO CHANGE TO MARIADB tai vastaava
 	// commandline runner to add test data to database
 	@Bean
-	public CommandLineRunner demo(TodoRepository trepository) {
+	public CommandLineRunner demo(TodoRepository trepository, PriorityRepository prepository, 
+			PresentRepository presentrepo) {
 		return (args) -> {
+			
+			Priority a = new Priority("Low");
+			Priority b = new Priority("Medium");
+			Priority c = new Priority("High");
 
-			Todo a = new Todo("D", "downstairsTEST", "veera");
-			Todo b = new Todo("D", "do something else DD", "meikäpoika");
+			prepository.save(a);
+			prepository.save(b);
+			prepository.save(c);
 
-			Todo c = new Todo("S", "sumuTEST", "veera");
-			Todo d = new Todo("S", "do something else SS", "meikäpoika");
+			Todo i = new Todo("D", "downstairsTEST", "veera", a);
+			Todo j = new Todo("D", "do something else DD", "meikäpoika", b);
 
-			Todo e = new Todo("U", "U_TEST", "veera");
-			Todo f = new Todo("U", "do something else UU", "boi");
+			Todo x = new Todo("S", "sumuTEST", "veera", c);
+			Todo y = new Todo("S", "do something else SS", "meikäpoika", a);
+
+			Todo z = new Todo("U", "U_TEST", "veera", b);
+			Todo k = new Todo("U", "do something else UU", "boi", c);
 
 			// CURRENTLY CRASHES, HOW TO DEAL WITH ENTITIES? FIXED
 
-			trepository.save(a);
-			trepository.save(b);
+			trepository.save(i);
+			trepository.save(j);
 
-			trepository.save(c);
-			trepository.save(d);
+			trepository.save(x);
+			trepository.save(y);
 			
-			trepository.save(e);
-			trepository.save(f);
+			trepository.save(z);
+			trepository.save(k);
+			
+			Present me = new Present("Veera");
+			Present you = new Present("Maiju");
 
+			presentrepo.save(me);
+			presentrepo.save(you);
 		};
 	}
 }

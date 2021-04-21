@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Studio Home</title>
+		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+		<link th:href="@{/style.css}" rel="stylesheet">
+	</head>
+
+
+<!-- the main page, should show tasks for now, doesnt work yet, problem with todo : ${todos} ? -->
+<body>
+	<h1>Where do you wanna go?</h1>
+	<a th:href="@{downstairs}">alakerta</a>
+	<a th:href="@{upstairs}">yläkerta</a>
+	<a th:href="@{sumu}" class="btn btn-primary">sumu</a>
+	
+	<table>
+		<tbody>
+			<tr>
+			
+				<th><br>CURRENTLY AT STUDIO/SUMU</th>
+			</tr>
+
+			<!--   its tasks, cause in the controller it says tasks at model add attribute -->
+			<tr th:each="present : ${people}">
+				<td th:text="${present.person}"></td>
+				
+				<td><a th:href="@{/delete_H/{id}(id=${present.id})}"class="btn btn-xs btn-danger">Delete</a></td>
+				<!--  <td><a th:href="@{/edit_D/{id}(id=${todo.id})}" class="btn btn-success">Edit</a></td> -->
+			
+			</tr>
+		</tbody>
+	</table>
+	
+	
+	<!-- TODO: CAN YOU PUT ADD FORM ON THE HOME PAGE? HOW TO DEAL WITHOUT ADD CONTROLLER?
+		 ADD CREATE NEW PRESENT TO SAVE THING? -->
+	
+	<!-- THINK ABOUT VARIABLE NAMES? DO COMMENTS! -->
+	<!-- TOMORROW: CHECK THIS FORM THING QUICKLY, IF IT TAKES TOO MUCH TIME, JUST ADD DIFFERENT
+		 ADD PAGE AND DO SECURITY NEXT, REST AFTER, THEN ITS DONE?
+		 	NEED TO DO THE VIDEO TOO -->
+
+		<a href="/addH" class="btn btn-primary">Add New person </a>
+</body>
+</html>

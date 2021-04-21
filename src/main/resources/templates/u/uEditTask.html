@@ -3,6 +3,7 @@
 <head>
 <title>Edit D Task</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<link th:href="@{/style.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -13,6 +14,12 @@
 			<input type = "hidden" th:field="*{place}" class = "form-control"/>
 			<input type ="text" th:field="*{task}"/>
 			<input type ="text" th:field="*{who}"/>
+
+			<label for="prioritylist">Priority</label>
+			<select id="prioritylist" th:field="*{priority}" class="form-control">
+ 			<option th:each="priority: ${priorities}" th:value="${priority.pId}" 
+ 					th:text="${priority.urgency}"></option>
+			</select>
 
 			<input type="submit" class="btn btn-success" value="Save"></input>
 		</form>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.studioApp.model.TodoRepository;
+import com.example.studioApp.model.PriorityRepository;
 import com.example.studioApp.model.Todo;
 
 @Controller
@@ -16,6 +17,9 @@ public class SumuController {
 
 	@Autowired
 	private TodoRepository trepo; 
+	
+	@Autowired
+	private PriorityRepository prepository;
 	
 	@GetMapping(value = "/sumu")
 	public String sumu(Model model) {
@@ -26,6 +30,7 @@ public class SumuController {
 	@RequestMapping(value="addS")
 	public String addTaskS(Model model) {
 		model.addAttribute("todo", new Todo());
+		model.addAttribute("priorities", prepository.findAll());
 		return "s/sAddTask";
 	}
 	
@@ -44,6 +49,7 @@ public class SumuController {
 	@GetMapping(value = "/edit_S/{id}")
 	public String editTask(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("todo", trepo.findById(id));
+		model.addAttribute("priorities", prepository.findAll());
 		return "s/sEditTask";
 	}
 //TODO YOU NEED TO CREATE DIFFERENT ENITIES FOR ALL OF THE REPOS, DOESNT WORK THE WAY I HOPED :( 
