@@ -45,4 +45,9 @@ public class HomeController {
 		prepo.deleteById(id);
 		return "redirect:/home";
 	}
+	
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
 }

@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.example.studioApp.model.TodoRepository;
+import com.example.studioApp.model.User;
+import com.example.studioApp.model.UserRepository;
 import com.example.studioApp.model.Present;
 import com.example.studioApp.model.PresentRepository;
 import com.example.studioApp.model.Priority;
@@ -24,7 +26,7 @@ public class StudioAppApplication {
 	// commandline runner to add test data to database
 	@Bean
 	public CommandLineRunner demo(TodoRepository trepository, PriorityRepository prepository, 
-			PresentRepository presentrepo) {
+			PresentRepository presentrepo, UserRepository urepository) {
 		return (args) -> {
 			
 			Priority a = new Priority("Low");
@@ -60,6 +62,12 @@ public class StudioAppApplication {
 
 			presentrepo.save(me);
 			presentrepo.save(you);
+			
+			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "user@email.com","USER");
+			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C","admin@email.com" ,"ADMIN");
+
+			urepository.save(user1);
+			urepository.save(user2);
 		};
 	}
 }
