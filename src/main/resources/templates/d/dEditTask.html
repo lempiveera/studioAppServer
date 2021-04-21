@@ -3,7 +3,7 @@
 <head>
 <title>Edit Downstairs Task</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-<link th:href="@{/style.css}" rel="stylesheet">
+<link th:href="@{/styleD.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -11,8 +11,12 @@
 	<div>
 		<form th:object="${todo}" th:action="@{../saveD}" action="#" method="post">
 			<input type = "hidden" th:field="*{id}" class = "form-control"/>
+			
 			<input type = "hidden" th:field="*{place}" class = "form-control"/>
+			<label for="task">Task</label> 
 			<input type ="text" th:field="*{task}"/>
+			
+			<label for="who">Who</label> 
 			<input type ="text" th:field="*{who}"/>
 
 			<label for="prioritylist">Priority</label>
@@ -24,6 +28,7 @@
 			<input type="submit" class="btn btn-success" value="Save"></input>
 		</form>
 	</div>
-
+	
+	<a th:href="@{/downstairs}">back</a>
 </body>
 </html>

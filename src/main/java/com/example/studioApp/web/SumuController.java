@@ -22,12 +22,14 @@ public class SumuController {
 	@Autowired
 	private PriorityRepository prepository;
 	
+	//list of todos for sumu
 	@GetMapping(value = "/sumu")
 	public String sumu(Model model) {
-		model.addAttribute("tasks", trepo.findByPlace("S"));
+		model.addAttribute("tasks", trepo.findByPlace("S")); 
 		return "s/sumu";
 	}
 	
+	//adding a new todo for sumu
 	@RequestMapping(value="addS")
 	public String addTaskS(Model model) {
 		model.addAttribute("todo", new Todo());
@@ -35,12 +37,14 @@ public class SumuController {
 		return "s/sAddTask";
 	}
 	
+	//saving new todo
 	@PostMapping(value = "saveS")
 	public String saveTask(Todo task) {
 		trepo.save(task);
 		return "redirect:sumu";
 	}
 	
+	//Deleting only possible for admin users
 	@GetMapping(value = "/delete_S/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteTask(@PathVariable("id") Long id, Model model) {
@@ -48,6 +52,7 @@ public class SumuController {
 		return "redirect:/sumu";
 	}
 	
+	//Editing possible for all users
 	@GetMapping(value = "/edit_S/{id}")
 	public String editTask(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("todo", trepo.findById(id));

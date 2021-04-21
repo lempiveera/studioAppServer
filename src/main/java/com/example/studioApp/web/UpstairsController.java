@@ -22,12 +22,14 @@ public class UpstairsController {
 	@Autowired
 	private PriorityRepository prepository;
 	
+	//list of todos for upstairs
 	@GetMapping(value = "/upstairs")
 	public String upstairs(Model model) {
 		model.addAttribute("tasks", trepo.findByPlace("U"));
 		return "u/upstairs";
 	}
 	
+	//adding a new todo for upstairs
 	@RequestMapping(value="addU")
 	public String addTaskD(Model model) {
 		model.addAttribute("todo", new Todo());
@@ -35,16 +37,14 @@ public class UpstairsController {
 		return "u/uAddTask";
 	}
 
-	//VARIABLE NAMES TASK VS TODO FIGURE IT OUT what is the best way
+	//saving new todo
 	@PostMapping(value = "saveU")
 	public String saveTask(Todo task) {
 		trepo.save(task);
 		return "redirect:upstairs";
 	}
 	
-	//TODO "No class com.example.studioApp.model.Todo entity with id 5 exists!" WHAT IS THIS?
-	//FIGURE IT OUT
-	//JUUUH MIGHT BE A BIGGER ISSUE
+	//Deleting only possible for admin users
 	@GetMapping(value = "/delete_U/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteTask(@PathVariable("id") Long id, Model model) {
@@ -52,6 +52,7 @@ public class UpstairsController {
 		return "redirect:/upstairs";
 	}
 	
+	//Editing possible for all users
 	@GetMapping(value = "/edit_U/{id}")
 	public String editTask(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("todo", trepo.findById(id));

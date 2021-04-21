@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Add who present</title>
+<title>Add who's present</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-<link th:href="@{/style.css}" rel="stylesheet">
+<link th:href="@{/stylehome.css}" rel="stylesheet">
 </head>
 
+<!-- Page for adding yourself on the currently present list -->
 <body>
-	<h1>add who</h1>
+	<h1>Who are you?</h1>
 	<div>
 		<form th:object="${present}" th:action="@{saveH}" action="#" method="post">
 		 	<input type="hidden" th:field="*{id}" class="form-control" />
 
-			<!--  adds label D for place, D is for downstairs -->
-			<label for="person">Task</label> 
-			<input type="text" th:field="*{person}" /> 
 			
+			<input type="text" th:field="*{person}" /> 
 			
 			<input type="submit" value="Save"></input>
 		</form>
+		<a th:href="@{home}">back</a>
 	</div>
-
 </body>
 </html>

@@ -3,18 +3,18 @@
 <head>
 <title>Upstairs</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-<link href="/style.css" rel="stylesheet">
+<link href="/styleD.css" rel="stylesheet">
 </head>
 
 
-<!-- the main page, should show tasks for now, doesnt work yet, problem with todo : ${todos} ? -->
+<!-- Upstairs page, shows upstairs tasks-->
 <body>
 	<h1>upstairs</h1>
 	<table>
 		<tbody class="tasklist">
 			<tr>
 				<th>Task</th>
-				<th>Whos task</th>
+				<th>Who</th>
 				<th>Priority</th>
 			</tr>
 			
@@ -25,7 +25,6 @@
 				<td th:text="${todo.priority.urgency}"></td>
 			  	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete_U/{id}(id=${todo.id})}"class="btn btn-xs btn-danger">Delete</a></td>
 				<td><a th:href="@{/edit_U/{id}(id=${todo.id})}" class="btn btn-success">Edit</a></td> 
-				<!--  was nice i commented these out, indstead of removing. Didint have to do them again -->
 			</tr>
 		</tbody>
 	</table>

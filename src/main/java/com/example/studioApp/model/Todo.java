@@ -10,6 +10,10 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Todo {
 
+	//Entity for saving todos. Task means what task needs to be done, who is who is going to do it
+	//Place means which studio/sumu. Its marked with either D for downstairs, S for sumu and U for upstairs
+	//Priority for how urgent the task is
+	
 	@ManyToOne
 	@JoinColumn(name = "pId")
 	private Priority priority;

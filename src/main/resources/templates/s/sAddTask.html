@@ -3,7 +3,7 @@
 <head>
 <title>Add Task for S</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-<link th:href="@{/style.css}" rel="stylesheet">
+<link th:href="@{/styleD.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 		<form th:object="${todo}" th:action="@{saveS}" action="#" method="post">
 			<input type="hidden" th:field="*{id}" class="form-control" /> 
 			<input class="form-control" type="hidden" th:value="S" id="place" name= "place"/>
-			
+			<!--  adds label S for place, S is for sumu -->
 			<label for="task">Task</label> 
 			<input type="text" th:field="*{task}" /> 
 			
@@ -28,6 +28,6 @@
 			<input type="submit" value="Save"></input>
 		</form>
 	</div>
-
+	<a th:href="@{sumu}">back</a>
 </body>
 </html>

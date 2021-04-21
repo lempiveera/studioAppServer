@@ -29,6 +29,8 @@ public class StudioAppApplication {
 			PresentRepository presentrepo, UserRepository urepository) {
 		return (args) -> {
 			
+			//test data, and inserting priorities
+			
 			Priority a = new Priority("Low");
 			Priority b = new Priority("Medium");
 			Priority c = new Priority("High");
@@ -36,32 +38,25 @@ public class StudioAppApplication {
 			prepository.save(a);
 			prepository.save(b);
 			prepository.save(c);
+			
+			Todo x = new Todo("D", "downstairsTEST", "meikä", a);
 
-			Todo i = new Todo("D", "downstairsTEST", "veera", a);
-			Todo j = new Todo("D", "do something else DD", "meikäpoika", b);
+			Todo y = new Todo("S", "sumuTEST", "teikä", b);
 
-			Todo x = new Todo("S", "sumuTEST", "veera", c);
-			Todo y = new Todo("S", "do something else SS", "meikäpoika", a);
+			Todo z = new Todo("U", "upstairsTEST", "joku", c);
 
-			Todo z = new Todo("U", "U_TEST", "veera", b);
-			Todo k = new Todo("U", "do something else UU", "boi", c);
-
-			// CURRENTLY CRASHES, HOW TO DEAL WITH ENTITIES? FIXED
-
-			trepository.save(i);
-			trepository.save(j);
 
 			trepository.save(x);
-			trepository.save(y);
-			
+			trepository.save(y);		
 			trepository.save(z);
-			trepository.save(k);
+
 			
-			Present me = new Present("Veera");
-			Present you = new Present("Maiju");
+			Present me = new Present("Me");
+			Present you = new Present("You");
 
 			presentrepo.save(me);
 			presentrepo.save(you);
+			
 			
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "user@email.com","USER");
 			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C","admin@email.com" ,"ADMIN");

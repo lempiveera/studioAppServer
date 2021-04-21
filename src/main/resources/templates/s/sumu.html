@@ -3,18 +3,18 @@
 <head>
 <title>Sumu</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-		<link href="/style.css" rel="stylesheet">
+		<link href="/styleD.css" rel="stylesheet">
 </head>
 
 
-<!-- the main page, should show tasks for now, doesnt work yet, problem with todo : ${todos} ? -->
+<!-- Sumu page, shows sumus tasks-->
 <body>
 	<h1>sumu</h1>
 	<table>
 		<tbody class="tasklist">
 			<tr>
 				<th>Task</th>
-				<th>Whos task</th>
+				<th>Who</th>
 				<th>Priority</th>
 			</tr>
 			
@@ -25,7 +25,6 @@
 				<td th:text="${todo.priority.urgency}"></td>
 			  	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete_S/{id}(id=${todo.id})}"class="btn btn-xs btn-danger">Delete</a></td>
 				<td><a th:href="@{/edit_S/{id}(id=${todo.id})}" class="btn btn-success">Edit</a></td> 
-				<!--  was nice i commented these out, indstead of removing. Didint have to do them again -->
 			</tr>
 		</tbody>
 	</table>

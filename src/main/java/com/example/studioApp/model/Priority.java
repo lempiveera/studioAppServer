@@ -19,6 +19,8 @@ public class Priority {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "priority")
 	private List<Todo> todos;
 	
+	//For marking the urgency of a task to be done
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	

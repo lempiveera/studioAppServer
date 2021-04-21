@@ -28,14 +28,14 @@ public class DownstairsController {
 	@Autowired
 	private PriorityRepository prepository;
 	
-	//controller for downstairs page, need a controller for everypage cause thymeleaf be like that
-	//GetMapping = RequestMapping(value="/downstairs, method = RequestMethpod.GET), works the same way with POST etc.
+	//list of todos for downstairs
 	@GetMapping(value = "/downstairs")
 	public String downstairs(Model model) {
 		model.addAttribute("tasks", trepo.findByPlace("D"));
 		return "d/downstairs";
 	}
 	
+	//adding a new todo for downstairs
 	@RequestMapping(value="addD")
 	public String addTaskD(Model model) {
 		model.addAttribute("todo", new Todo());
@@ -43,13 +43,14 @@ public class DownstairsController {
 		return "d/dAddTask";
 	}
 
-	//VARIABLE NAMES TASK VS TODO FIGURE IT OUT what is the best way
+	//saving new todo
 	@PostMapping(value = "saveD")
 	public String saveTask(Todo task) {
 		trepo.save(task);
 		return "redirect:downstairs";
 	}
 	
+	//Deleting only possible for admin users
 	@GetMapping(value = "/delete_D/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteTask(@PathVariable("id") Long id, Model model) {
@@ -57,6 +58,7 @@ public class DownstairsController {
 		return "redirect:/downstairs";
 	}
 	
+	//Editing possible for all users
 	@GetMapping(value = "/edit_D/{id}")
 	public String editTask(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("todo", trepo.findById(id));

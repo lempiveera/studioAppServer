@@ -3,18 +3,18 @@
 <head>
 <title>Downstairs</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-<link href="/style.css" rel="stylesheet">
+<link href="/styleD.css" rel="stylesheet">
 </head>
 
 
-<!-- the main page, should show tasks for now, doesnt work yet, problem with todo : ${todos} ? -->
+<!-- Downstairs page, shows downstairs tasks-->
 <body>
-	<h1>alakerta</h1>
+	<h1>Downstairs studio</h1>
 	<table>
 		<tbody class="tasklist">
 			<tr>
 				<th>Task</th>
-				<th>Whos task</th>
+				<th>Who</th>
 				<th>Priority</th>
 			</tr>
 
@@ -29,6 +29,6 @@
 		</tbody>
 	</table>
 	<a href="/addD" class="btn btn-primary">Add New Task</a>
-	<a th:href="@{home}">back home</a>
+	<a th:href="@{/home}">Back home</a>
 </body>
 </html>

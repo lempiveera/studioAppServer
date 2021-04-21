@@ -8,17 +8,21 @@ import javax.persistence.Id;
 @Entity
 public class Present {
 	
+	// the present entity is for marking who is currently present at studio/sumu
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	private Long id;
 	private String person;
+
 	
 	public Present() { }
 	
 	public Present(String person) {
 		super();
 		this.person = person;
+
 	}
 
 	public Long getId() {
@@ -36,7 +40,6 @@ public class Present {
 	public void setPerson(String person) {
 		this.person = person;
 	}
-
 	
 	
 }

@@ -19,46 +19,53 @@ import com.example.studioApp.model.PresentRepository;
 @Controller
 public class HomeController {
 
+	//Home page controller. Contains links to all the locations, 
+	//and a list of people currently at studios/sumu
+	
 	@Autowired
 	private PresentRepository prepo;
 
-	// controller for home page
-	// Three different spaces, own controllers for each page
+	
 	@GetMapping(value = "/home")
 	public String Present(Model model) {
 		model.addAttribute("people", prepo.findAll());
 		return "h/home";
 	}
 
+	//for creating a new Present = a new person who is currently there
 	@RequestMapping(value = "addH")
 	public String addPresent(Model model) {
 		model.addAttribute("present", new Present());
 		return "h/hAddPresent";
 	}
 
-	// VARIABLE NAMES TASK VS TODO FIGURE IT OUT what is the best way
+	// Saving a new person to the currently here list
 	@PostMapping(value = "saveH")
 	public String savePresent(Present present, Model model) {
 		prepo.save(present);
 		return "redirect:home";
 	}
-
+	
+	//deleting a person from currently here list, all users can delete persons
 	@GetMapping(value = "/delete_H/{id}")
 	public String deletePresent(@PathVariable("id") Long id, Model model) {
 		prepo.deleteById(id);
 		return "redirect:/home";
 	}
 	
+	//REST
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public @ResponseBody List<Present> whoIsPresentRest() {
 		return (List<Present>) prepo.findAll();
 	}
 	
+	//REST
 	@RequestMapping(value="/present/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Present> FindWhoIsPresentRest(@PathVariable("id") Long id) {
 		return prepo.findById(id);
 	}
 
+	//for login page
 	@RequestMapping(value = "/login")
 	public String login() {
 		return "login";

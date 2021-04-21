@@ -10,6 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Table (name="usertable")
 public class User {
+	
+	//for security
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, unique = true)
