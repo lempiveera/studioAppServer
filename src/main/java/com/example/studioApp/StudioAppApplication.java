@@ -57,9 +57,11 @@ public class StudioAppApplication {
 			
 			Present me = new Present("Veera");
 			Present you = new Present("Maiju");
+			Present she = new Present("she");
 
 			presentrepo.save(me);
 			presentrepo.save(you);
+			presentrepo.save(she);
 		};
 	}
 }
