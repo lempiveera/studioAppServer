@@ -26,9 +26,6 @@ public class Todo {
 	private String task;
 	private String who;
 
-	// Todo class, task = todo, or the thing that needs to be done
-	// who = who will do it, can it be empty?
-	// place = downstairs, upstairs, sumu
 
 	public Todo() {
 	}
@@ -41,10 +38,7 @@ public class Todo {
 		this.priority = priority;
 	}
 
-	// public Task(String task) {
-	// constructor for creating todo without who does it
-	// this.task = task;
-	// } IS THIS NEEDED?
+
 
 	public Priority getPriority() {
 		return priority;
