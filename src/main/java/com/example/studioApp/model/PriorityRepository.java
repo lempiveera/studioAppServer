@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PriorityRepository extends CrudRepository<Priority, Long> {
 	
-	List<Todo> findByUrgency(String urgency);
+	List<Priority> findByUrgency(String urgency);
 	long deleteByUrgency(String urgency);
 }
