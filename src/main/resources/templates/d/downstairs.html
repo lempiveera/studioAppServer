@@ -23,7 +23,7 @@
 				<td th:text="${todo.task}"></td>
 				<td th:text="${todo.who}"></td>
 				<td th:text="${todo.priority.urgency}"></td>
-				<td><a th:href="@{/delete_D/{id}(id=${todo.id})}"class="btn btn-xs btn-danger">Delete</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete_D/{id}(id=${todo.id})}"class="btn btn-xs btn-danger">Delete</a></td>
 				<td><a th:href="@{/edit_D/{id}(id=${todo.id})}" class="btn btn-success">Edit</a></td>
 			</tr>
 		</tbody>

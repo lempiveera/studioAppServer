@@ -1,5 +1,8 @@
 package com.example.studioApp.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.example.studioApp.model.PriorityRepository;
 import com.example.studioApp.model.Todo;
@@ -46,6 +51,7 @@ public class DownstairsController {
 	}
 	
 	@GetMapping(value = "/delete_D/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteTask(@PathVariable("id") Long id, Model model) {
 		trepo.deleteById(id);
 		return "redirect:/downstairs";
@@ -57,4 +63,5 @@ public class DownstairsController {
 		model.addAttribute("priorities", prepository.findAll());
 		return "d/dEditTask";
 	}
+	
 }

@@ -1,6 +1,7 @@
 package com.example.studioApp.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +46,7 @@ public class UpstairsController {
 	//FIGURE IT OUT
 	//JUUUH MIGHT BE A BIGGER ISSUE
 	@GetMapping(value = "/delete_U/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteTask(@PathVariable("id") Long id, Model model) {
 		trepo.deleteById(id);
 		return "redirect:/upstairs";
