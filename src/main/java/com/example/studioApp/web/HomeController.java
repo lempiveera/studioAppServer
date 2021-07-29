@@ -54,7 +54,7 @@ public class HomeController {
 	}
 	
 	//REST
-	@RequestMapping(value="/index", method = RequestMethod.GET)
+	@RequestMapping(value="/home_index", method = RequestMethod.GET)
 	public @ResponseBody List<Present> whoIsPresentRest() {
 		return (List<Present>) prepo.findAll();
 	}

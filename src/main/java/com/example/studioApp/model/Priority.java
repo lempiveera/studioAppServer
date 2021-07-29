@@ -35,11 +35,11 @@ public class Priority {
 	}
 	
 	
-	public List<Todo> getBooks() {
+	public List<Todo> getTodos() {
 		return todos;
 	}
 
-	public void setBooks(List<Todo> todos) {
+	public void setTodos(List<Todo> todos) {
 		this.todos = todos;
 	}
 

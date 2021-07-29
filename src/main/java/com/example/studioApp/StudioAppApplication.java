@@ -37,11 +37,11 @@ public class StudioAppApplication {
 			prepository.save(b);
 			prepository.save(c);
 			
-			Todo x = new Todo("D", "downstairsTEST", "meikä", a);
+			Todo x = new Todo("D", "alakerta Todo", "meikä", a);
 
-			Todo y = new Todo("S", "sumuTEST", "teikä", b);
+			Todo y = new Todo("S", "sumu Todo", "teikä", b);
 
-			Todo z = new Todo("U", "upstairsTEST", "joku", c);
+			Todo z = new Todo("U", "yläkerta Todo", "joku", c);
 
 
 			trepository.save(x);
