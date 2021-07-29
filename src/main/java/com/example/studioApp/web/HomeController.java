@@ -66,8 +66,9 @@ public class HomeController {
 	}
 
 	//for login page
-	@RequestMapping(value = "/login")
-	public String login() {
-		return "login";
-	}
+//	@RequestMapping(value = "/login")
+//	public String login() {
+//		return "login";
+//	}
+	
 }

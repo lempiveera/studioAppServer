@@ -11,14 +11,14 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.example.studioApp.model.User;
+//import com.example.studioApp.model.User;
 import com.example.studioApp.model.Present;
 import com.example.studioApp.model.PresentRepository;
 import com.example.studioApp.model.Priority;
 import com.example.studioApp.model.PriorityRepository;
 import com.example.studioApp.model.Todo;
 import com.example.studioApp.model.TodoRepository;
-import com.example.studioApp.model.UserRepository;
+//import com.example.studioApp.model.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -30,8 +30,8 @@ public class StudioAppRepositoryTest {
 	@Autowired
 	private PriorityRepository priorityrepo;
 
-	@Autowired
-	private UserRepository urepo;
+//	@Autowired
+//	private UserRepository urepo;
 
 	@Autowired
 	private PresentRepository presentrepo;
@@ -69,7 +69,7 @@ public class StudioAppRepositoryTest {
 		assertThat(deletedPriorities).isGreaterThan(0);
 	}
 	
-	@Test
+/* 	@Test
 	public void createNewUser() {
 		User user = new User("user2", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "user@email.com","USER");
 		urepo.save(user);
@@ -87,6 +87,7 @@ public class StudioAppRepositoryTest {
 		long deletedUsers = urepo.deleteByUsername("user");
 		assertThat(deletedUsers).isEqualTo(1);
 	}
+	*/
 	
 	@Test
 	public void findByPersonShouldReturnPresent() {
