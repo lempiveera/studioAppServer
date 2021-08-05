@@ -23,6 +23,7 @@
 			<!--   its present, cause in the controller it says present at model add attribute -->
 			<tr th:each="present : ${people}">
 				<td th:text="${present.person}"></td>
+				<td th:text="${present.space.location}"></td> 
 				<td><a th:href="@{/delete_H/{id}(id=${present.id})}"
 					class="btn btn-xs btn-danger">I went home</a></td>
 			</tr>

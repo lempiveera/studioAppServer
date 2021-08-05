@@ -11,6 +11,8 @@ import com.example.studioApp.model.PresentRepository;
 import com.example.studioApp.model.Priority;
 import com.example.studioApp.model.PriorityRepository;
 import com.example.studioApp.model.Todo;
+import com.example.studioApp.model.Space;
+import com.example.studioApp.model.SpaceRepository;
 
 @SpringBootApplication
 public class StudioAppApplication {
@@ -24,7 +26,7 @@ public class StudioAppApplication {
 	// commandline runner to add test data to database
 	@Bean
 	public CommandLineRunner demo(TodoRepository trepository, PriorityRepository prepository, 
-			PresentRepository presentrepo) {
+			PresentRepository presentrepo, SpaceRepository spacerepo) {
 		return (args) -> {
 			
 			//test data, and inserting priorities
@@ -32,7 +34,15 @@ public class StudioAppApplication {
 			Priority a = new Priority("Low");
 			Priority b = new Priority("Medium");
 			Priority c = new Priority("High");
+			
+			Space down = new Space("Downstairs");
+			Space up = new Space("Upstairs");
+			Space sumu = new Space("Sumu");
 
+			spacerepo.save(down);
+			spacerepo.save(up);
+			spacerepo.save(sumu);
+			
 			prepository.save(a);
 			prepository.save(b);
 			prepository.save(c);
@@ -49,8 +59,8 @@ public class StudioAppApplication {
 			trepository.save(z);
 
 			
-			Present me = new Present("Me");
-			Present you = new Present("You");
+			Present me = new Present("Me", down);
+			Present you = new Present("You", up);
 
 			presentrepo.save(me);
 			presentrepo.save(you);

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.studioApp.model.Present;
 import com.example.studioApp.model.PresentRepository;
+import com.example.studioApp.model.Space;
+import com.example.studioApp.model.SpaceRepository;
 
 @Controller
 public class HomeController {
@@ -25,6 +27,8 @@ public class HomeController {
 	@Autowired
 	private PresentRepository prepo;
 
+	@Autowired
+	private SpaceRepository srepo;
 	
 	@GetMapping(value = "/home")
 	public String Present(Model model) {
@@ -36,6 +40,7 @@ public class HomeController {
 	@RequestMapping(value = "addH")
 	public String addPresent(Model model) {
 		model.addAttribute("present", new Present());
+		model.addAttribute("spaces", srepo.findAll());
 		return "h/hAddPresent";
 	}
 

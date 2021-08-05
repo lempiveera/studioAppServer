@@ -8,13 +8,17 @@
 
 <!-- Page for adding yourself on the currently present list -->
 <body>
-	<h1>Who are you?</h1>
+	<h1>Who are you? and where are you?</h1>
 	<div>
 		<form th:object="${present}" th:action="@{saveH}" action="#" method="post">
 		 	<input type="hidden" th:field="*{id}" class="form-control" />
-
+	
+			<input type="text" th:field="*{person}" />
 			
-			<input type="text" th:field="*{person}" /> 
+			<select id="spacelist" th:field="*{space}" class="form-control">
+ 			<option th:each="space: ${spaces}" th:value="${space.sId}" 
+ 					th:text="${space.location}"></option>
+			</select>
 			
 			<input type="submit" value="Save"></input>
 		</form>
